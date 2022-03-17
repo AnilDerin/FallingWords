@@ -8,7 +8,8 @@ import com.anilderin.fallingwords.viewmodel.GameViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    //private lateinit var  viewModel : GameViewModel
+    private lateinit var viewModel : GameViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
