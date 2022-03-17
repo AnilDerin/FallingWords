@@ -19,6 +19,8 @@ class GameViewModel() : ViewModel() {
     var lives = 3
 
 
+
+
     fun getWords() {
         viewModelScope.launch {
             wordAPIService.getWordPairs()
