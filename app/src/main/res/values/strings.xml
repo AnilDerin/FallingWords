@@ -12,4 +12,6 @@
     <string name="group">Group</string>
     <string name="_0">0</string>
     <string name="_3">3</string>
+    <string name="intro_text">Intro Text</string>
+    <string name="welcome_text">Welcome to the Falling Words!</string>
 </resources>
