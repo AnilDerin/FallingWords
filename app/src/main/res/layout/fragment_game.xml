@@ -13,7 +13,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#39FF14"
-        android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/correct"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,9 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/word_shape"
-        android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:padding="16dp"
+        android:padding="20dp"
         android:text="Grupo"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -47,7 +45,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/red"
-        android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/wrong"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +74,6 @@
                 android:id="@+id/tvWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="Group"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -99,7 +95,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed-medium"
                         android:text="@string/score"
                         android:textColor="#00FB3F"
                         android:textSize="16sp"
@@ -109,13 +104,12 @@
                         android:id="@+id/tvScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_2dp"
+                        android:layout_marginStart="2dp"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:text="@string/_0"
                         android:textColor="#00FB3F"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        tools:text="0" />
+                        android:textStyle="bold"/>
 
 
                 </LinearLayout>
@@ -138,7 +132,7 @@
                         android:id="@+id/tvLives"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_2dp"
+                        android:layout_marginStart="2dp"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:text="@string/_3"
                         android:textColor="#FF1900"

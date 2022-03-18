@@ -1,14 +1,9 @@
 <resources>
     <string name="app_name">FallingWords</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="correct">Correct</string>
     <string name="wrong">Wrong</string>
-    <string name="game_description">Hey, As a player you have to decide if the falling word is the correct spanish translation or not.</string>
+    <string name="game_description">Be ready to match English and Spanish words for get points! You have only 3 lives! Good Luck!</string>
     <string name="start_game">Start Game</string>
-    <string name="intro_title">Learn Spanish\nBy Playing A Game</string>
-    <string name="instructions">Instructions</string>
-    <string name="tutorial_text">1) Words will fall from the top.\n\n2) Select if the translation is correct or wrong before it hits the bottom.\n\n3) If your answer is right you will get 10 points.\n\n4) If wrong, you lose a life.\n\n5) You have 3 lives only</string>
     <string name="score">Score:</string>
     <string name="lives">Lives:</string>
     <string name="your_score">Your Score</string>
