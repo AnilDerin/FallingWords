@@ -6,5 +6,5 @@ data class WordPairs(
     @SerializedName("text_eng")
     var textEng: String,
     @SerializedName("text_spa")
-    val textSpa: String
+    var textSpa: String
 )

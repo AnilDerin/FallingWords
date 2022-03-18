@@ -1,6 +1,7 @@
 package com.anilderin.fallingwords.service
 
 import com.anilderin.fallingwords.model.WordPairs
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -9,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class WordAPIService {
 
-    private val BASE_URL = "https://gist.githubusercontent.com"
+    private val BASE_URL = "https://gist.githubusercontent.com/"
 
     private val api = Retrofit.Builder()
         .baseUrl(BASE_URL)
