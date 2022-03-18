@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.anilderin.fallingwords.R
 import com.anilderin.fallingwords.databinding.FragmentGameBinding
 import com.anilderin.fallingwords.viewmodel.GameViewModel
+import io.reactivex.internal.operators.flowable.FlowableDoAfterNext
 import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment(R.layout.fragment_game) {
@@ -30,14 +31,15 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
         viewModel.getWords()
 
-        viewModel.wordPairLiveData.observe(viewLifecycleOwner, Observer {
-            it.textSpa = binding.tvSpanishWord.toString()
-        })
 
-        binding.correctButton.setOnClickListener { onSuccess() }
-        binding.wrongButton.setOnClickListener { onWrong() }
-        binding.tvSpanishWord.setOnClickListener { fallDownAnimation() }
 
+        binding.apply {
+            /*tvWord.text = viewModel.wordPairLiveData.value.textEng
+            tvSpanishWord.text = viewModel.wordPairLiveData.value.textSpa*/
+            correctButton.setOnClickListener { onSuccess() }
+            wrongButton.setOnClickListener { onWrong() }
+            csLayout.setOnClickListener { fallDownAnimation() }
+        }
         return binding.root
     }
 
@@ -45,11 +47,10 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getWords()
-
         viewModel.wordPairLiveData.observe(viewLifecycleOwner, Observer {
-            it.textEng.let { binding.tvWord.toString() }
+            it.textEng.let { binding.tvWord.text }
         })
+
     }
 
 
@@ -66,13 +67,12 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private fun updateLiveText() {
         binding.tvLives.text = viewModel.lives.toString()
-
-
     }
 
     private fun fallDownAnimation() {
         val animationSlideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down)
         tvSpanishWord.startAnimation(animationSlideDown)
+
     }
 
     private fun gameOverText() {
