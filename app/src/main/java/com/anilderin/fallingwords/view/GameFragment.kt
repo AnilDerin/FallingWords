@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.anilderin.fallingwords.R
 import com.anilderin.fallingwords.databinding.FragmentGameBinding
 import com.anilderin.fallingwords.viewmodel.GameViewModel
@@ -36,11 +36,8 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
         binding.correctButton.setOnClickListener { onSuccess() }
         binding.wrongButton.setOnClickListener { onWrong() }
+        binding.tvSpanishWord.setOnClickListener { fallDownAnimation() }
 
-        binding.tvSpanishWord.setOnClickListener {
-            val animationSlideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down)
-            tvSpanishWord.startAnimation(animationSlideDown)
-        }
         return binding.root
     }
 
@@ -73,9 +70,14 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     }
 
+    private fun fallDownAnimation() {
+        val animationSlideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down)
+        tvSpanishWord.startAnimation(animationSlideDown)
+    }
+
     private fun gameOverText() {
         if (viewModel.lives == 0) {
-            Toast.makeText(context, "Game Over!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(GameFragmentDirections.actionGameFragmentToScoreFragment())
         }
     }
 
