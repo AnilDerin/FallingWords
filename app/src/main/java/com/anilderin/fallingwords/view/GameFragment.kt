@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.anilderin.fallingwords.R
 import com.anilderin.fallingwords.databinding.FragmentGameBinding
 import com.anilderin.fallingwords.viewmodel.GameViewModel
-import io.reactivex.internal.operators.flowable.FlowableDoAfterNext
 import kotlinx.android.synthetic.main.fragment_game.*
 
 class GameFragment : Fragment(R.layout.fragment_game) {
@@ -29,16 +29,17 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         viewModel = ViewModelProvider(this)[GameViewModel::class.java]
         _binding = FragmentGameBinding.inflate(inflater, container, false)
 
-        viewModel.getWords()
+
 
 
 
         binding.apply {
-            /*tvWord.text = viewModel.wordPairLiveData.value.textEng
-            tvSpanishWord.text = viewModel.wordPairLiveData.value.textSpa*/
+            /*tvWord.text = viewModel.wordPairLiveData.value?.textEng
+            tvSpanishWord.text = viewModel.wordPairLiveData.value?.textSpa*/
             correctButton.setOnClickListener { onSuccess() }
             wrongButton.setOnClickListener { onWrong() }
-            csLayout.setOnClickListener { fallDownAnimation() }
+            tvSpanishWord.setOnClickListener { fallDownAnimation() }
+
         }
         return binding.root
     }
@@ -47,9 +48,20 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Toast.makeText(context, "Click on the Spanish word to start!", Toast.LENGTH_SHORT).show()
+
+        viewModel.getWords()
+
+
         viewModel.wordPairLiveData.observe(viewLifecycleOwner, Observer {
-            it.textEng.let { binding.tvWord.text }
+            it.textEng = binding.tvWord.text.toString()
         })
+
+        viewModel.wordPairLiveData.observe(viewLifecycleOwner, Observer {
+            it.textSpa = binding.tvSpanishWord.text.toString()
+        })
+
+
 
     }
 
@@ -62,7 +74,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun onWrong() {
         viewModel.onWrong()
         updateLiveText()
-        gameOverText()
+        gameOver()
     }
 
     private fun updateLiveText() {
@@ -72,13 +84,13 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun fallDownAnimation() {
         val animationSlideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down)
         tvSpanishWord.startAnimation(animationSlideDown)
-
     }
 
-    private fun gameOverText() {
+    private fun gameOver() {
         if (viewModel.lives == 0) {
             findNavController().navigate(GameFragmentDirections.actionGameFragmentToScoreFragment())
         }
+
     }
 
     private fun updateScoreText() {

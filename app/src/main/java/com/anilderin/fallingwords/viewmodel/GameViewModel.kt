@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.anilderin.fallingwords.model.WordPairs
-import com.anilderin.fallingwords.service.WordAPI
 import com.anilderin.fallingwords.service.WordAPIService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,6 +24,7 @@ class GameViewModel : ViewModel() {
     var lives = 3
 
 
+
     init {
         Log.i("GameViewModel", "GameViewModel created!")
     }
@@ -40,8 +40,8 @@ class GameViewModel : ViewModel() {
                     override fun onSuccess(response: List<WordPairs>) {
                         _wordPairLiveData.value = response[0]
                         Log.d("GameViewModel", "Data fetch successful")
-                        println(_wordPairLiveData.value!!.textEng)
-                        println(_wordPairLiveData.value!!.textSpa)
+                        println(_wordPairLiveData.value?.textEng)
+                        println(_wordPairLiveData.value?.textSpa)
                     }
 
                     override fun onError(e: Throwable) {
