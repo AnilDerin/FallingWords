@@ -45,16 +45,10 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         Toast.makeText(context, "Click on the Spanish word to start!", Toast.LENGTH_SHORT).show()
     }
 
-
-    private fun fetchWords() {
-        binding.tvWord.text = viewModel.wordPairLiveData.value?.textEng
-        binding.tvSpanishWord.text = viewModel.wordPairLiveData.value?.textSpa
-    }
-
-
     private fun onSuccess() {
         viewModel.onCorrect()
         updateScoreText()
+        viewModel.getWords()
         fetchWords()
         fallDownAnimation()
         gameWin()
@@ -63,8 +57,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun onWrong() {
         viewModel.onWrong()
         updateLiveText()
+        viewModel.getWords()
+        fetchWords()
         fallDownAnimation()
         gameOver()
+
+    }
+
+    private fun fetchWords() {
+        binding.tvWord.text = viewModel.wordPairLiveData.value?.textEng
+        binding.tvSpanishWord.text = viewModel.wordPairLiveData.value?.textSpa
     }
 
     private fun updateLiveText() {
@@ -83,7 +85,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     }
 
     private fun gameWin() {
-        if (viewModel.score == 10) {
+        if (viewModel.score == 20) {
             findNavController().navigate(GameFragmentDirections.actionGameFragmentToWinFragment())
         }
     }

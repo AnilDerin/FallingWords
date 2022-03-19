@@ -40,9 +40,6 @@ class GameViewModel : ViewModel() {
                         _wordPairLiveData.value = response[wordIndex]
                         wordIndex++
                         Log.d("GameViewModel", "Data fetch successful")
-                        println(_wordPairLiveData.value?.textEng)
-                        println(_wordPairLiveData.value?.textSpa)
-                        println(wordIndex)
                     }
 
                     override fun onError(e: Throwable) {
@@ -56,7 +53,6 @@ class GameViewModel : ViewModel() {
 
     fun onCorrect() {
         score++
-
     }
 
     fun onWrong() {
