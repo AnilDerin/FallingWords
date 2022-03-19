@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -76,6 +77,21 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun fallDownAnimation() {
         val animationSlideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down)
         tvSpanishWord.startAnimation(animationSlideDown)
+        animationSlideDown.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {
+                binding.tvSpanishWord.isClickable = false
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+                onWrong()
+                updateLiveText()
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {
+
+            }
+
+        })
     }
 
     private fun gameOver() {

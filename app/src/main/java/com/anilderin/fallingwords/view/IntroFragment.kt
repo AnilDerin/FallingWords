@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.anilderin.fallingwords.R
 import com.anilderin.fallingwords.databinding.FragmentIntroBinding
-import kotlinx.android.synthetic.main.fragment_intro.*
 
 class IntroFragment : Fragment(R.layout.fragment_intro) {
 
@@ -40,5 +39,4 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
         super.onDestroyView()
         _binding = null
     }
-
 }
