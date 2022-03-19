@@ -2,6 +2,7 @@ package com.anilderin.fallingwords.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.anilderin.fallingwords.model.WordPairs
@@ -16,13 +17,13 @@ class GameViewModel : ViewModel() {
     private val wordAPIService = WordAPIService()
     private val disposable = CompositeDisposable()
 
-    private val _wordPairLiveData = MutableLiveData<WordPairs>()
+    private val _wordPairLiveData = MediatorLiveData<WordPairs>()
     val wordPairLiveData: LiveData<WordPairs> = _wordPairLiveData
 
 
     var score = 0
     var lives = 3
-
+    var wordIndex = 0
 
 
     init {
@@ -31,17 +32,18 @@ class GameViewModel : ViewModel() {
 
 
     fun getWords() {
-
         disposable.add(
             wordAPIService.getWordPairs()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<List<WordPairs>>() {
                     override fun onSuccess(response: List<WordPairs>) {
-                        _wordPairLiveData.value = response[0]
+                        _wordPairLiveData.value = response[wordIndex]
+                        wordIndex++
                         Log.d("GameViewModel", "Data fetch successful")
                         println(_wordPairLiveData.value?.textEng)
                         println(_wordPairLiveData.value?.textSpa)
+                        println(wordIndex)
                     }
 
                     override fun onError(e: Throwable) {
@@ -52,8 +54,12 @@ class GameViewModel : ViewModel() {
         )
     }
 
+
+
+
     fun onCorrect() {
         score++
+
     }
 
     fun onWrong() {

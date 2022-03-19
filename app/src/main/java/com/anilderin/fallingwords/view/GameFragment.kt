@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.anilderin.fallingwords.R
@@ -29,17 +28,12 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         viewModel = ViewModelProvider(this)[GameViewModel::class.java]
         _binding = FragmentGameBinding.inflate(inflater, container, false)
 
-
-
-
+        viewModel.getWords()
 
         binding.apply {
-            /*tvWord.text = viewModel.wordPairLiveData.value?.textEng
-            tvSpanishWord.text = viewModel.wordPairLiveData.value?.textSpa*/
             correctButton.setOnClickListener { onSuccess() }
             wrongButton.setOnClickListener { onWrong() }
             tvSpanishWord.setOnClickListener { fallDownAnimation() }
-
         }
         return binding.root
     }
@@ -49,31 +43,27 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         super.onViewCreated(view, savedInstanceState)
 
         Toast.makeText(context, "Click on the Spanish word to start!", Toast.LENGTH_SHORT).show()
-
-        viewModel.getWords()
-
-
-        viewModel.wordPairLiveData.observe(viewLifecycleOwner, Observer {
-            it.textEng = binding.tvWord.text.toString()
-        })
-
-        viewModel.wordPairLiveData.observe(viewLifecycleOwner, Observer {
-            it.textSpa = binding.tvSpanishWord.text.toString()
-        })
+    }
 
 
-
+    private fun fetchWords() {
+        binding.tvWord.text = viewModel.wordPairLiveData.value?.textEng
+        binding.tvSpanishWord.text = viewModel.wordPairLiveData.value?.textSpa
     }
 
 
     private fun onSuccess() {
         viewModel.onCorrect()
         updateScoreText()
+        fetchWords()
+        fallDownAnimation()
+        gameWin()
     }
 
     private fun onWrong() {
         viewModel.onWrong()
         updateLiveText()
+        fallDownAnimation()
         gameOver()
     }
 
@@ -90,7 +80,12 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         if (viewModel.lives == 0) {
             findNavController().navigate(GameFragmentDirections.actionGameFragmentToScoreFragment())
         }
+    }
 
+    private fun gameWin() {
+        if(viewModel.score == 10) {
+            findNavController().navigate(GameFragmentDirections.actionGameFragmentToWinFragment())
+        }
     }
 
     private fun updateScoreText() {

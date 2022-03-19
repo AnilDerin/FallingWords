@@ -16,4 +16,6 @@
     <string name="welcome_text">Welcome to the Falling Words!</string>
     <string name="restart">Restart</string>
     <string name="game_over">Game Over!</string>
+    <string name="score_text">Your Score is: 10</string>
+    <string name="congrat_text">Congrats!</string>
 </resources>
