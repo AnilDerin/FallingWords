@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/action_gameFragment_to_scoreFragment"
-            app:destination="@id/scoreFragment"
+            app:destination="@id/loseFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -39,8 +39,8 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/scoreFragment"
-        android:name="com.anilderin.fallingwords.view.ScoreFragment"
+        android:id="@+id/loseFragment"
+        android:name="com.anilderin.fallingwords.view.LoseFragment"
         android:label="ScoreFragment" >
         <action
             android:id="@+id/action_scoreFragment_to_gameFragment"

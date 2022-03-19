@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.anilderin.fallingwords.R
-import com.anilderin.fallingwords.databinding.FragmentScoreBinding
+import com.anilderin.fallingwords.databinding.FragmentLoseBinding
 
-class ScoreFragment : Fragment(R.layout.fragment_score) {
+class LoseFragment : Fragment(R.layout.fragment_lose) {
 
-    private var _binding: FragmentScoreBinding? = null
+    private var _binding: FragmentLoseBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,11 +20,11 @@ class ScoreFragment : Fragment(R.layout.fragment_score) {
         savedInstanceState: Bundle?,
     ): View {
 
-        _binding = FragmentScoreBinding.inflate(inflater, container, false)
+        _binding = FragmentLoseBinding.inflate(inflater, container, false)
 
         binding.apply {
             restartButton.setOnClickListener {
-                findNavController().navigate(ScoreFragmentDirections.actionScoreFragmentToGameFragment())
+                findNavController().navigate(LoseFragmentDirections.actionScoreFragmentToGameFragment())
             }
         }
         return binding.root

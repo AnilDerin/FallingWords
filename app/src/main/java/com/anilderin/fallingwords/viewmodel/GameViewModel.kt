@@ -2,7 +2,6 @@ package com.anilderin.fallingwords.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.anilderin.fallingwords.model.WordPairs
@@ -17,7 +16,7 @@ class GameViewModel : ViewModel() {
     private val wordAPIService = WordAPIService()
     private val disposable = CompositeDisposable()
 
-    private val _wordPairLiveData = MediatorLiveData<WordPairs>()
+    private val _wordPairLiveData = MutableLiveData<WordPairs>()
     val wordPairLiveData: LiveData<WordPairs> = _wordPairLiveData
 
 
@@ -53,8 +52,6 @@ class GameViewModel : ViewModel() {
                 })
         )
     }
-
-
 
 
     fun onCorrect() {
