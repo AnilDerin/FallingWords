@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="284dp"
         android:text="@string/score_text"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"

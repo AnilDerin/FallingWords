@@ -98,7 +98,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     }
 
     private fun gameWin() {
-        if (viewModel.score == 20) {
+        if (viewModel.score == 10) {
             findNavController().navigate(GameFragmentDirections.actionGameFragmentToWinFragment())
         }
     }
