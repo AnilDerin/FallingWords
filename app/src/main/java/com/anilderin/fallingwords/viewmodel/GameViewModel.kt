@@ -47,8 +47,6 @@ class GameViewModel : ViewModel() {
                 })
         )
     }
-
-
     fun onCorrect() {
         score++
     }

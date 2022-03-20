@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/score"
-                        android:textColor="#00FB3F"
+                        android:textColor="#16BC1D"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
                         android:layout_marginStart="2dp"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:text="@string/_0"
-                        android:textColor="#00FB3F"
+                        android:textColor="#FF16BC1D"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
