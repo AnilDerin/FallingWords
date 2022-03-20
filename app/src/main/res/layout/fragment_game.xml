@@ -61,8 +61,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/material_dynamic_neutral60"
         app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="#CED0D1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

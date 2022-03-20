@@ -22,7 +22,7 @@ class GameViewModel : ViewModel() {
 
     var score = 0
     var lives = 3
-    var wordIndex = (0..277).random()
+    var wordIndex = (0..277).shuffled().random()
 
     init {
         Log.i("GameViewModel", "GameViewModel created!")
