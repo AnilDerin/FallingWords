@@ -18,7 +18,8 @@
         android:text="@string/correct"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintWidth_percent="0.3"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/tvSpanishWord"
@@ -52,7 +53,8 @@
         app:layout_constraintEnd_toStartOf="@+id/correctButton"
         app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintWidth_percent="0.3"
+        tools:ignore="TextContrastCheck" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -99,20 +101,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/score"
-                        android:textColor="#16BC1D"
+                        android:textColor="#01CC01"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/tvScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
-                        android:fontFamily="sans-serif-condensed-medium"
                         android:text="@string/_0"
-                        android:textColor="#FF16BC1D"
+                        android:textColor="#01CC01"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="TextContrastCheck" />
 
 
                 </LinearLayout>
@@ -125,22 +128,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed-medium"
                         android:text="@string/lives"
                         android:textColor="#FF1900"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/tvLives"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
-                        android:fontFamily="sans-serif-condensed-medium"
                         android:text="@string/_3"
                         android:textColor="#FF1900"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        tools:ignore="TextContrastCheck"
                         tools:text="3" />
 
 

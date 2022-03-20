@@ -19,6 +19,6 @@
     <string name="score_text">You win! Your score: 10</string>
     <string name="congrats_text">Congrats! 🥳</string>
     <string name="click_here">Click here</string>
-    <string name="good_luck">GOOD LUCK!</string>
-    <string name="nice_try">😢 Nice try 😢</string>
+    <string name="good_luck">Good Luck!</string>
+    <string name="nice_try">Nice try 😢</string>
 </resources>
