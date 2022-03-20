@@ -22,13 +22,11 @@ class GameViewModel : ViewModel() {
 
     var score = 0
     var lives = 3
-    var wordIndex = 0
-
+    var wordIndex = (0..277).random()
 
     init {
         Log.i("GameViewModel", "GameViewModel created!")
     }
-
 
     fun getWords() {
         disposable.add(
@@ -39,7 +37,7 @@ class GameViewModel : ViewModel() {
                     override fun onSuccess(response: List<WordPairs>) {
                         _wordPairLiveData.value = response[wordIndex]
                         wordIndex++
-                        Log.d("GameViewModel", "Data fetch successful")
+                        println(wordIndex)
                     }
 
                     override fun onError(e: Throwable) {

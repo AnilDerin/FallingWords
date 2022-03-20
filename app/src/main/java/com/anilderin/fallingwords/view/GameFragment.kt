@@ -31,6 +31,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
         viewModel.getWords()
 
+
         binding.apply {
             correctButton.setOnClickListener { onSuccess() }
             wrongButton.setOnClickListener { onWrong() }
@@ -49,8 +50,6 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun onSuccess() {
         viewModel.onCorrect()
         updateScoreText()
-        viewModel.getWords()
-        fetchWords()
         fallDownAnimation()
         gameWin()
     }
@@ -58,20 +57,14 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun onWrong() {
         viewModel.onWrong()
         updateLiveText()
-        viewModel.getWords()
-        fetchWords()
         fallDownAnimation()
         gameOver()
-
     }
 
     private fun fetchWords() {
+
         binding.tvWord.text = viewModel.wordPairLiveData.value?.textEng
         binding.tvSpanishWord.text = viewModel.wordPairLiveData.value?.textSpa
-    }
-
-    private fun updateLiveText() {
-        binding.tvLives.text = viewModel.lives.toString()
     }
 
     private fun fallDownAnimation() {
@@ -79,6 +72,10 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         tvSpanishWord.startAnimation(animationSlideDown)
         animationSlideDown.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
+                if (viewModel.lives > 0) {
+                    viewModel.getWords()
+                    fetchWords()
+                }
                 binding.tvSpanishWord.isClickable = false
             }
 
@@ -104,6 +101,10 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         if (viewModel.score == 20) {
             findNavController().navigate(GameFragmentDirections.actionGameFragmentToWinFragment())
         }
+    }
+
+    private fun updateLiveText() {
+        binding.tvLives.text = viewModel.lives.toString()
     }
 
     private fun updateScoreText() {

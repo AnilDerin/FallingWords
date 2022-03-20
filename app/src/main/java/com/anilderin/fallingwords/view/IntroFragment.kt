@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.anilderin.fallingwords.R
+import com.anilderin.fallingwords.databinding.FragmentGameBinding
 import com.anilderin.fallingwords.databinding.FragmentIntroBinding
+import com.anilderin.fallingwords.viewmodel.GameViewModel
 
 class IntroFragment : Fragment(R.layout.fragment_intro) {
 
     private var _binding: FragmentIntroBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel: GameViewModel
 
 
     override fun onCreateView(
@@ -22,6 +25,7 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
         _binding = FragmentIntroBinding.inflate(inflater, container, false)
         return binding.root
 
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,6 +34,7 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
         binding.apply {
             startButton.setOnClickListener {
                 findNavController().navigate(IntroFragmentDirections.actionIntroFragmentToGameFragment())
+
             }
         }
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FallingWords</string>
+    <string name="app_name">Falling Words</string>
     <string name="correct">Correct</string>
     <string name="wrong">Wrong</string>
     <string name="game_description">Be ready to match English and Spanish words for get points! You have only 3 lives! Good Luck!</string>
@@ -18,4 +18,6 @@
     <string name="game_over">Game Over!</string>
     <string name="score_text">Your Score: 20</string>
     <string name="congrats_text">Congrats!</string>
+    <string name="click_here">Click here</string>
+    <string name="good_luck">GOOD LUCK!</string>
 </resources>
