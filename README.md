@@ -49,7 +49,8 @@
 ## If I had more time
 
 - The game is currently not working exactly as requested from me.
-- I would try to make the logic of the game work properly
+- I would try to make the logic of the game work properly(I think I figured it out after I submitted the assigment)
+- I would add some functionality and create better design UI/UX on Intro and Game Over screens.
 - I would do some unit tests if I had more time.
 
 
